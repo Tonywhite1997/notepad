@@ -31,7 +31,7 @@ function displayNotepadHistory(){
         </div>
         `
 
-        mainArea.prepend(textSection)
+        mainArea.appendChild(textSection)
     }
 }
 
