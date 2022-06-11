@@ -106,3 +106,22 @@ body{
     color: rgb(138, 244, 138);
     transition: all 500ms ease-in-out;
 }
+
+@media screen and (max-width: 650px) {
+    .header__title{
+        font-size: 1.5rem;
+    }
+
+    .header__library__link{
+        font-size: 1.1rem;
+    }
+
+    .main-area__section__title__field{
+        width: 90%;
+    }
+
+    .main-area__section__button{
+        margin-top: 2em;
+    }
+    
+}
