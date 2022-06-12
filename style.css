@@ -67,7 +67,7 @@ body{
 .main-area__section__h2{
     color: black;
     opacity: .8;
-    animation: pump 1000ms infinite;
+    animation: pump 2000ms infinite;
 }
 
 @keyframes pump{
@@ -76,6 +76,7 @@ body{
     }
     100%{
         transform: scale(1.2);
+        color: rgb(5, 178, 5);
     }
 }
 
@@ -84,6 +85,17 @@ body{
     width: 60%;
     font-size: 1.2rem;
     border-radius: 5px;
+    border: 2px solid rgb(123, 247, 123);
+    border-left: 2px solid red;
+    border-right: 2px solid red;
+}
+
+.main-area__section__title__field::placeholder{
+    padding-left: .5em;
+}
+
+.main-area__section__title__field:focus{
+    outline-color: red;
 }
 
 .main-area__section__textfield{
@@ -91,13 +103,22 @@ body{
     height: 50%;
     font-size: 1.2rem;
     padding: .5em;
-    border-radius: 5px;
+    border: 2px solid lightgreen;
+    border-top: 2px solid red;
+    border-bottom: 2px solid red;
+    border-radius: 10px;
+}
+
+.main-area__section__textfield:focus{
+    border: none;
+    outline: 2px solid red;
 }
 
 .main-area__section__button{
     padding: .5em;
     border-radius: 5px;
     font-weight: bold;
+    border: none;
     background-color: rgb(155, 246, 155);
 }
 
