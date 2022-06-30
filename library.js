@@ -1,6 +1,8 @@
 const mainArea = document.querySelector(".main-area")
 const deleteAllButton = document.querySelector(".main-area__delete__all__button")
 const mainMessage = document.querySelector(".main-area__message")
+const showAllText = document.querySelector(".expand__text__div");
+
 
 let notepadTexts = JSON.parse(localStorage.getItem("input")) || []
 
@@ -20,15 +22,19 @@ function displayNotepadHistory(){
         textSection.style.width = "95%"
         textSection.style.position = "relative"
         textSection.style.marginBottom = "1em"
+
+        const textToSHow = text.texts.length > 50 ? `${text.texts.slice(0, 50)}...` : text.texts
+
         textSection.innerHTML = `
         <div class="message-div">
             <i class="fas fa-bullseye"></i>
             <h3>${text.title}</h3>
-            <p>${text.texts}</p>
+            <p>${textToSHow}</p>
         </div>
         <div class="control__buttons">
             <button class="delete__button">Delete</button>
         </div>
+        <button class="read__more"> Read more</button>
         `
 
         mainArea.appendChild(textSection)
@@ -64,6 +70,7 @@ deletButtons.forEach((deleteButton, buttonIndex)=>{
     })
 })
 
+
 if(notepadTexts.length < 2){
     deleteAllButton.style.display = "none"
 }
@@ -71,4 +78,55 @@ if(notepadTexts.length < 2){
 deleteAllButton.addEventListener("click", ()=>{
     localStorage.removeItem("input")
     location.reload()
+})
+
+const readMoreBtns = document.querySelectorAll(".read__more");
+
+//deciding which note div should get the read more button. This is decided by the length of the texts from the user. if below 50 text length, read more button is uneccessary.
+
+function getTextLength(){
+    let noReadMoreBtn = [];
+    readMoreBtns.forEach((readMoreBtn, btnIndex)=>{
+        notepadTexts.filter((text, index)=>{
+            if(btnIndex === index && text.texts.length < 50){
+                noReadMoreBtn.push(text) 
+            }
+        })
+        
+        if(noReadMoreBtn.length){
+            readMoreBtn.style.display = "none"
+        }
+
+        console.log(noReadMoreBtn.length);
+    })
+}
+
+getTextLength();
+
+let showTextDiv;
+
+readMoreBtns.forEach((readMoreBtn, btnIndex)=>{
+    readMoreBtn.addEventListener("click", ()=>{
+        let matched = notepadTexts.find((notepadText, index)=>{
+            if(btnIndex === index){
+                return notepadText
+            }
+        })
+        if(matched){
+            showTextDiv = document.createElement("div")
+            showTextDiv.innerHTML = `
+            <h3>${matched.title}</h3>
+            <p>${matched.texts}</p>
+            `
+            showAllText.appendChild(showTextDiv)
+            showAllText.style.display = "initial"
+        }
+    })
+})
+
+const closeDivBtn = document.querySelector(".fa-times")
+
+closeDivBtn.addEventListener("click", ()=>{
+    showAllText.style.display = "none"
+    showTextDiv.innerHTML = ""
 })
