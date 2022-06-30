@@ -85,11 +85,10 @@ const readMoreBtns = document.querySelectorAll(".read__more");
 //deciding which note div should get the read more button. This is decided by the length of the texts from the user. if below 50 text length, read more button is uneccessary.
 
 function getTextLength(){
-    let noReadMoreBtn = [];
     readMoreBtns.forEach((readMoreBtn, btnIndex)=>{
-        notepadTexts.filter((text, index)=>{
-            if(btnIndex === index && text.texts.length < 50){
-                noReadMoreBtn.push(text) 
+        let noReadMoreBtn = notepadTexts.filter((text, index)=>{
+            if(btnIndex === index){
+                return text.texts.length < 50
             }
         })
         

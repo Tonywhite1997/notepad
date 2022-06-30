@@ -13,7 +13,6 @@ body{
 }
 
 .header{
-    /* position: fixed; */
     height: 10%;
     width: 100%;
     background-color: lightgreen;
@@ -137,7 +136,6 @@ body{
 }
 
 .main-area__delete__all__button{
-    /* bottom: 3em; */
     position: absolute;
     margin-top: 1em;
     bottom: 1em;
