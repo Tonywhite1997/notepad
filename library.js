@@ -96,15 +96,16 @@ function getTextLength(){
         if(noReadMoreBtn.length){
             readMoreBtn.style.display = "none"
         }
-
-        console.log(noReadMoreBtn.length);
     })
 }
 
 getTextLength();
 
+// initiating a variable to store new div element that will be created below. 
 let showTextDiv;
 
+
+//adding event listener to each read more button
 readMoreBtns.forEach((readMoreBtn, btnIndex)=>{
     readMoreBtn.addEventListener("click", ()=>{
         let matched = notepadTexts.find((notepadText, index)=>{
@@ -124,9 +125,13 @@ readMoreBtns.forEach((readMoreBtn, btnIndex)=>{
     })
 })
 
+
+//closing the pop up text container with a click
 const closeDivBtn = document.querySelector(".fa-times")
 
 closeDivBtn.addEventListener("click", ()=>{
     showAllText.style.display = "none"
+
+    //clearing all the texts in the container whenever the container is closed.
     showTextDiv.innerHTML = ""
 })

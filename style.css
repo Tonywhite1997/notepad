@@ -9,6 +9,7 @@ body{
     width: 100vw;
     font-size: 16px;
     font-family: monospace;
+    overflow-x: hidden;
 }
 
 .header{
@@ -67,17 +68,6 @@ body{
 .main-area__section__h2{
     color: black;
     opacity: .8;
-    animation: pump 2000ms infinite;
-}
-
-@keyframes pump{
-    0%{
-        transform: scale(1);
-    }
-    100%{
-        transform: scale(1.2);
-        color: rgb(5, 178, 5);
-    }
 }
 
 .main-area__section__title__field{
